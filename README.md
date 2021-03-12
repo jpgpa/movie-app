@@ -28,6 +28,7 @@ You should then use the **API key** on your requests including it in your header
 ```
 
 here you can see the result:
+
 ![result](https://media.giphy.com/media/ETWTvogWEXTGZcUMeK/giphy.gif)
 
 Packages/Widgets used in this showcase:
