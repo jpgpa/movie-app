@@ -1,16 +1,41 @@
-# movie_app
+# Movie App Showcase
 
-A new Flutter project.
+This is a simple showcase app so you can see how you can add things like Hero and Swiper widget into flutter apps. You can also see the way I structured the project so i can fetch data from a movie API.
 
-## Getting Started
+## Before you start
 
-This project is a starting point for a Flutter application.
+Before you start you should create a developer account on TheMovieDB page
+[TheMovieDB developers page](https://developers.themoviedb.org/4/getting-started/authorization)
 
-A few resources to get you started if this is your first Flutter project:
+and then get an API key so you can fetch the data you want.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+You should then use the **API key** on your requests including it in your header. Here i'm using http package for fetching data from the API:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+    final response = await client.get(
+      url,
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        'Authorization': 'Bearer ${MovieDbClient.api_key}'
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return MovieList.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
+```
+
+Packages/Widgets used in this showcase:
+
+- flutter_bloc for handling app state;
+- flutter_swiper for the movie swiper;
+- loading_skeleton for showing loading widgets;
+- http for fetching data from the internet;
+- get_it for service locator.
+
+The loading package I'm using on this showcase was created by me so if you have the time go check it out:
+
+- [Github - Loading Skeleton](https://github.com/jpgpa/loading_skeleton_widget)
+- [Pub.dev - Loading Skeleton](https://pub.dev/packages/loading_skeleton)
